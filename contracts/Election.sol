@@ -7,7 +7,15 @@ contract Election {
     uint voteCount;
   }
 
+  mapping(uint => Candidate) public candidates;
+  uint public candidatesCount;
   constructor () public {
-    candidate1 = "Candidate 1";
+    addCandidate("Candidate 1");
+    addCandidate("Candidate 2");
+  }
+
+  function addCandidate (string _name) private {
+    candidatesCount ++;
+    candidates[candidatesCount] = Candidates(candidatesCount, _name, 0);
   }
 }
